@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Card = ({ children, isdisabled, isoutlined }) => {
+function Button({
+  children = "Hello world",
+  isdisabled = false,
+  isoutlined = false,
+}) {
   return (
     <button
       className={`w-full p-2 mb-4 text-white border-black border-4 ${
@@ -10,19 +14,21 @@ export const Card = ({ children, isdisabled, isoutlined }) => {
         ${isoutlined ? "bg-transparent text-black" : "bg-black"}
       `}
       disabled={isdisabled}
+      type="submit"
     >
       {children}
     </button>
   );
-};
+}
 
-Card.propTypes = {
+Button.propTypes = {
   children: PropTypes.string.isRequired,
   isdisabled: PropTypes.bool,
   isoutlined: PropTypes.bool,
 };
-
-Card.defaultProps = {
-  children : 'Hello world'
-}
-export default Card;
+Button.defaultProps = {
+  // children: "Hello world",
+  isdisabled: false,
+  isoutlined: false,
+};
+export default Button;
